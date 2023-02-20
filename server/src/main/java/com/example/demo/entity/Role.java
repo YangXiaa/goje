@@ -2,13 +2,13 @@ package com.example.demo.entity;
 
 import java.util.Date;
 
-public class Menu {
+
+public class Role {
     private Integer id;
-    private String menuName;
-    private String menuUrl;
+    private String roleName;
     private String description;
-    private Integer createUerId;
-    private Date dateTime;
+    private Integer createUserId;
+    private Date createDate;
     private Integer updateUserId;
     private Date updateDate;
 
@@ -20,20 +20,12 @@ public class Menu {
         this.id = id;
     }
 
-    public String getMenuName() {
-        return menuName;
+    public String getRoleName() {
+        return roleName;
     }
 
-    public void setMenuName(String menuName) {
-        this.menuName = menuName;
-    }
-
-    public String getMenuUrl() {
-        return menuUrl;
-    }
-
-    public void setMenuUrl(String menuUrl) {
-        this.menuUrl = menuUrl;
+    public void setRoleName(String roleName) {
+        this.roleName = roleName;
     }
 
     public String getDescription() {
@@ -44,20 +36,20 @@ public class Menu {
         this.description = description;
     }
 
-    public Integer getCreateUerId() {
-        return createUerId;
+    public Integer getCreateUserId() {
+        return createUserId;
     }
 
-    public void setCreateUerId(Integer createUerId) {
-        this.createUerId = createUerId;
+    public void setCreateUserId(Integer createUserId) {
+        this.createUserId = createUserId;
     }
 
-    public Date getDateTime() {
-        return dateTime;
+    public Date getCreateDate() {
+        return createDate;
     }
 
-    public void setDateTime(Date dateTime) {
-        this.dateTime = dateTime;
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
     }
 
     public Integer getUpdateUserId() {
