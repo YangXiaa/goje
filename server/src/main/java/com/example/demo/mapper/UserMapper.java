@@ -2,6 +2,8 @@ package com.example.demo.mapper;
 
 import java.util.List;
 import com.example.demo.entity.User;
+import com.example.demo.entity.UserVo;
+import com.example.demo.entity.UserQueryParam;
 
 public interface UserMapper {
     int count();
@@ -11,9 +13,12 @@ public interface UserMapper {
 
     void update(User user);
 
-    void delete(User user);
+    void delete(String code);
 
-    User findOne(User user);
+    User findOne(String code);
 
 
+    int getPageCount(UserQueryParam userQueryParam);
+
+    List<UserVo> getPage(UserQueryParam userQueryParam);
 }

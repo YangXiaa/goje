@@ -11,14 +11,13 @@
         select * from user;
     </select>
 
-
     <insert id="save">
         insert into user(code,true_name,phone,password,create_date,create_user_id) values
         (#{code},#{trueName},#{phone},#{password},now(),1)
     </insert>
 
     <update id="update">
-        update user set true_name=#{trueName},phone=#{phone} where code=#{code}
+        update user set true_name=#{trueName},phone=#{phone},update_date=now(),update_user_id=1 where code=#{code}
     </update>
 
     <delete id="delete">
@@ -27,6 +26,38 @@
 
     <select id="findOne" resultType="com.example.demo.entity.User">
         select * from user where code=#{code}
+    </select>
+
+    <sql id="pageQueryCondition">
+        <where>
+            <if test="trueName != null and trueName != ''">
+                and u1.true_name LIKE concat('%',#{trueName},'%')
+            </if>
+            <if test="phone != null and phone != ''">
+                and u1.phone LIKE concat('%',#{phone},'%')
+            </if>
+            <if test="createDateStart != null and createDateStart != ''">
+                and u1.create_date &gt;= #{createDateStart}
+            </if>
+            <if test="createDateEnd != null and createDateEnd != ''">
+                and u1.create_date &lt;= #{createDateEnd}
+            </if>
+        </where>
+    </sql>
+
+    <select id="getPageCount" resultType="int">
+        select count(*) from user u1
+        <include refid="pageQueryCondition"></include>
+    </select>
+
+    <select id="getPage" resultType="com.example.demo.entity.UserVo">
+        select u1.*,u2.true_name create_user_name,u3.true_name update_user_name,r.role_name roleName
+        from user u1
+        left join user u2 on u1.create_user_id = u2.id
+        left join user u3 on u1.update_user_id = u3.id
+        left join role r on u1.role_id=r.id
+        <include refid="pageQueryCondition"></include>
+        limit ${(page-1)*pageSize},#{pageSize}
     </select>
 
 </mapper>

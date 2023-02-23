@@ -25,7 +25,7 @@
     </update>
 
     <delete id="delete">
-        delete from role where id=#{id}
+        delete from role where role_name=#{roleName}
     </delete>
 </mapper>
 

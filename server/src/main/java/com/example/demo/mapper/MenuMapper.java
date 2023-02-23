@@ -9,11 +9,11 @@ public interface MenuMapper {
 
     List<Menu> findAll();
 
-    Menu findOne(Menu menu);
+    Menu findOne(String menuName);
 
     void save(Menu menu);
 
     void update(Menu menu);
 
-    void delete(Menu menu);
+    void delete(String menuName);
 }

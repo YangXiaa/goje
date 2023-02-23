@@ -11,11 +11,11 @@ public interface RoleMapper {
 
     List<Role> findAll();
 
-    Role findOne(Role role);
+    Role findOne(String roleName);
 
     void insert(Role role);
 
     void update(Role role);
 
-    void delete(Role role);
+    void delete(String roleName);
 }
